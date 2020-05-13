@@ -83,14 +83,14 @@ SVM is a supervised machine learning algorithm which can be used for classificat
 kNN is easy-to-implement supervised machine learning algorithm that can be used to solve both classification and regression problems. The KNN algorithm assumes that similar things exist in close proximity. In other words, similar things are near to each other. To select the K that’s right for your data, we run the KNN algorithm several times with different values of K and choose the K that reduces the number of errors we encounter while maintaining the algorithm’s ability to accurately make predictions when it’s given data it hasn’t seen before.
 <br>
 
-![alt text](knn.png)
+![alt text](images/knn.png)
 >5. Logistic regression
 
 Logistic regression is the appropriate regression analysis to conduct when the dependent variable is dichotomous (binary). Logistic regression is a statistical model that in its basic form uses a logistic function. Logistic regression is used to describe data and to explain the relationship between one dependent binary variable and one or more nominal, ordinal, interval or ratio-level independent variables.<br><br>
 Below image shows difference between linear and logistic regression.
 <br>
 
-![alt text](logi.jfif)
+![alt text](images/logi.jfif)
 
 
 >Ensemble methods<br>
@@ -340,7 +340,7 @@ plt.show()
 ```
 
 
-![png](output_19_0.png)
+![png](images/output_19_0.png)
 
 
 
@@ -655,7 +655,7 @@ plt.show()
 ```
 
 
-![png](output_26_0.png)
+![png](images/output_26_0.png)
 
 
 * As we can see, most of the ratings are between 6 and 8.
@@ -787,7 +787,7 @@ ax.set_ylabel('Predicted rating')
 
 
 
-![png](output_38_2.png)
+![png](images/output_38_2.png)
 
 
 >Heatmap explanation:<br>
@@ -834,7 +834,7 @@ ax.set_ylabel('Predicted rating')
 
 
 
-![png](output_42_2.png)
+![png](images/output_42_2.png)
 
 
 
@@ -948,7 +948,7 @@ plt.show()
 ```
 
 
-![png](output_49_0.png)
+![png](images/output_49_0.png)
 
 
 
@@ -1010,7 +1010,7 @@ ax.set_ylabel('Predicted rating')
 
 
 
-![png](output_53_2.png)
+![png](images/output_53_2.png)
 
 
 
@@ -1054,7 +1054,7 @@ ax.set_ylabel('Predicted rating')
 
 
 
-![png](output_56_2.png)
+![png](images/output_56_2.png)
 
 
 * For same number of training and testing data, SVC model gives better accuracy than Linear SVC model, but at cost of time.
@@ -1103,7 +1103,7 @@ ax.set_ylabel('Predicted rating')
 
 
 
-![png](output_61_2.png)
+![png](images/output_61_2.png)
 
 
 >K nearest neighbours
@@ -1143,7 +1143,7 @@ ax.set_ylabel('Predicted rating')
 
 
 
-![png](output_64_2.png)
+![png](images/output_64_2.png)
 
 <br>
 
@@ -1193,7 +1193,7 @@ ax.set_ylabel('Predicted rating')
 
 
 
-![png](output_69_2.png)
+![png](images/output_69_2.png)
 
 
 Final Test
@@ -1234,7 +1234,7 @@ plt.show()
 ```
 
 
-![png](output_74_0.png)
+![png](images/output_74_0.png)
 
 
 >From above all classifiers and ensemble methods, Ridge classifier gives best output (prediction) for given review. So we are using that one for random review inputs.
