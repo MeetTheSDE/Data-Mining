@@ -1,13 +1,40 @@
 <center><b><h1>Data Mining Term Project Spring 2020</h1></bold></center>
+<center><bold><h2>Game rating prediction</h2></bold></center>
 
 >Name: Patel, Meetkumar Jigneshbhai<br>
 >UTA ID: 100175000
 
-The goal of the term project is building a classifier that you can show to someone with your homepage that will help you look competent.<br><br>
+Aim of this project:<br>
+---
+
+The goal of the term project is building a classifier that you can show to someone with your homepage that will help you look competent. Make improvements over the reference you are using to clssiy the object. Explain challenges you faced and your conttributions. Additionally, build a web application to present a demo of working of model for given user input (review).<br><br>
+
+Important Links:
+---
+1.   GitHub: https://github.com/Meet1809/datamining_final_project
+2.   Youtube video:<br>
+        1. https://youtu.be/w9lR2Sb1LEs (Web app) <br>
+        2. https://youtu.be/NKvUX3fOn9Q (This video contains classification in jupyter notebook only) 
+3. Web App: https://peaceful-castle-76181.herokuapp.com/ (Click this link to go to web app)
+3. My website: http://patelmeetkumar.uta.cloud/profile/
+4. Blog: http://patelmeetkumar.uta.cloud/blog/
+
+<br>
+
+Step by step instructions:
+---
+1. If you are running the jupyter notebook on your system then you should have installed all the libraries (dependencies) that I am using in the project by pip or conda on your system environment.
+2. Now, about flask web application:<br>
+    A. If you are running flask application file on local machine then use following command.
+      >python app.py<br>
+
+      This will start local server on URL: http://127.0.0.1:5000/ 
+
+    B. If you want to run it and test it on server (Heroku). Then you should have installed all dependencied that I have mentioned in requirements.txt file.<br>
+    After that, deploy from Heroku server.
 
 
-
-<h2>Overview of this notebook:</h2>
+<br><h2>Overview of this notebook:</h2>
 
 1.   I have used Board game geek dataset from kaggle:<br>
      Link: https://www.kaggle.com/jvanelteren/boardgamegeek-reviews<br>
@@ -15,20 +42,19 @@ The goal of the term project is building a classifier that you can show to someo
 2.   This dataset has 13million rows which is quite large dataset for the system that we use, so I have implemented this project on google colaboratory.<br>
 
 3.    Data preprocessing on dataset:<br>
-    In preprocessing, I removed all the rows having no values in comment column, as without comment value there is nothing to predict. 
-    To remove stop words from comments, first, I tokenized those comments using tokenizer tool provided by Natural Language toolkit (NLTK), and then removed those stop words. In nltk, there is one class "corpus" which contains list of these stop words. Along with them, comments are also converted into lower alphabets using lower() function.<br>
-    Data visualization:
-    For data visualization, I have used matplotlib library and plotted graph for total number of comments with their ratings value, and mean and median values.
+    Dara preprocessing is most crucial task in text analysis as well as in deep learning tasks. If you do not perform any pre processing on your raw data, then it will affect your model's performance and to your final result. Generally, in this step we remove emojis, stop words, some rare occurring words from text. Also lower capitalization and tokenization are performed. In preprocessing, I removed all the rows having no values in comment column, as without comment value there is nothing to predict. To remove stop words from comments, first, I tokenized those comments using tokenizer tool provided by Natural Language toolkit (NLTK), and then removed those stop words. In nltk, there is one class "corpus" which contains list of these stop words. Along with them, comments are also converted into lower alphabets using lower() function.<br>
+4. Data visualization:
+    For data visualization, matplotlib, seaborn libraries are used. Data is postulated by heatmap, bar graph with appropriate labels on axis and legends.
 
 4.   Models for data training and testing:<br>
     There are so many models for text classification, Naive Bayes, Support vector machine, random forest, ridge regression, linear regression, etc.<br>
     I have used some of those models in order to get the best accuracy on the dataset I am using.<br>
 
 5.   Performance evaluation of algorithms:<br>
-    We must know how our algorithm is working. For that purpose, some accuracy measures, error meaasurement techniques are used. <br>
+    We must know how our algorithm is working. For that purpose, some accuracy measures, error measurement techniques are used. <br>
     Such as, confusion matrix, F1 score, precision, recall, etc.
 
-
+<br>
 
 <h2>Classifiers in this project:</h2>
 
@@ -36,31 +62,27 @@ The goal of the term project is building a classifier that you can show to someo
 >1. Multinomial Naive Bayes
 
 This is basic logic behind naive bayes. It is all about conditional dependency.The term Multinomial Naive Bayes simply lets us know that each p(fi|c) is a multinomial distribution, rather than some other distribution. This works well for data which can easily be turned into counts, such as word counts in text.<br> 
-![alt text](https://miro.medium.com/max/341/0*EfYTXtTJ9X-Ua9Nh.png)
+![alt text](https://miro.medium.com/max/341/0*EfYTXtTJ9X-Ua9Nh.png)<br><br>
+
 
 >2. Ridge Classifier
 
 This classifier first converts the target values into {-1, 1} and then treats the problem as a regression task (multi-output regression in the multiclass case). The L2 norm term in ridge regression is weighted by the regularization parameter alpha. So, if the alpha value is 0, it means that it is just an Ordinary Least Squares Regression model. So, the larger is the alpha, the higher is the smoothness constraint.
+
 <br>
-![alt text](https://miro.medium.com/max/1528/1*3cEysrHZokqla0tXnZ-5GQ.png)
-<br><br>
-<bold>Example:
-<br>
-![alt text](https://www.analyticsvidhya.com/wp-content/uploads/2015/08/Bayes_41-850x310.png)
-<br>
-P(Yes | Sunny) = P( Sunny | Yes) * P(Yes) / P (Sunny)<br>
-Here we have P (Sunny |Yes) = 3/9 = 0.33, P(Sunny) = 5/14 = 0.36, P( Yes)= 9/14 = 0.64<br>
-Now, P (Yes | Sunny) = 0.33 * 0.64 / 0.36 = 0.60, which has higher probability.
+
 
 >3. Support vector machine<br>
 
 SVM is a supervised machine learning algorithm which can be used for classification or regression problems.Support vectors are data points that are closer to the hyperplane and influence the position and orientation of the hyperplane. Using these support vectors, we maximize the margin of the classifier. SVM has one argument named "kernel", which specifies, the hyperplane shape which separates labels. I am using Linear shape for kernel value.<br>
+
 ![alt text](https://66.media.tumblr.com/ff709fe1c77091952fb3e3e6af91e302/tumblr_inline_o9aa8dYRkB1u37g00_540.png)
 
 >4. k nearest neighbours<br>
 
 kNN is easy-to-implement supervised machine learning algorithm that can be used to solve both classification and regression problems. The KNN algorithm assumes that similar things exist in close proximity. In other words, similar things are near to each other. To select the K that’s right for your data, we run the KNN algorithm several times with different values of K and choose the K that reduces the number of errors we encounter while maintaining the algorithm’s ability to accurately make predictions when it’s given data it hasn’t seen before.
 <br>
+
 ![alt text](data:image/png;base64,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)
 
 >5. Logistic regression
@@ -72,12 +94,50 @@ Below image shows difference between linear and logistic regression.
 
 >Ensemble methods<br>
 
-Ensemple method is machine learning trechnique which improves accuracy of algorithm by combining two or more individual algorithms for same dataset.<br>
-On above part, I got accuracy for SVC, Linear SVC, logistic regression, but that is very low to classify some random text.<br>
-SO here, I am using ensemble method on those algorithms to get better accuracy than what I have got.<br><br>
-Below is the architecture of working of ensemble methods.<br>
+Ensemple method is machine learning trechnique which improves accuracy of algorithm by combining two or more individual algorithms for same dataset. There are many techniques by which we can perform ensembling of multiple classifier. Like, Bagging, boosting, usinf random forests, etc. But here I am using weighted voting over three classifiers.<br>
+<br><br>
+Below is the **architecture** of working of ensemble methods.<br>
 ![alt text](https://miro.medium.com/max/1400/0*PBGJw23ud8Sp7qO4.)
 
+<br>
+Evaluation Score
+---
+>After testing the classifiers on different samples of dataset, I received following evaluation score (accuracy).
+
+For Multinomial Naive Bayes and Ridge classifier I used whole dataset after cleaning. Length = 2637756 <br>
+1. Multinomial Naive Bayes: 30.164 %
+2. Ridge classifier: 31.380 %
+
+For support vector machine, logistic regression, linear SVC model and k nearest neighbors only 30000-50000 data sample. Because I want to perform ensemble method on these models, because by taking more data, session was crashing.
+1. Support vector machine: 28.678 %
+2. Linear SVC: 26.0 % 
+3. Logistic regression: 28.633 %
+4. k Nearest neighbors: 22.533 %
+
+I performed Ensemble method with weighted voting classifier on SVC, kNN and logistic regression model with 2,1 and 3 weights respectively.
+1. Accuracy of ensemble method: 28.811 %
+
+<br>
+
+Difference over References:
+---
+1. The guy in this reference is using Countvectorizer for vectorization of words. CountVectorizer just counts the word frequencies. I used TFIDFVectorizer for the same purpose, but with the TFIDFVectorizer the value increases proportionally to count, but is offset by the frequency of the word in the corpus. It helps us to deal with most frequent words in document. IDF states for inverse document frequency.<br>
+https://www.kaggle.com/ngrq94/boardgamegeek-reviews-data-preparation 
+
+<br>
+
+Challenged Faced
+---
+
+The dataset was too large for the systems we are using, so I need to pre process data first in order to use it for training and testing. For pre processing I had to use case lowering, tokenization, regular expression for alphabets, punctuation removal and removing stop words.<br>
+
+Dataset contains so many (above 70%) missing values (NaN) in comment column, which is required to predict rating. Before proceeding further removed these rows without affecting accuracy and meaningful data.<br>
+
+I used Flask to write web application code for text classification. Flask is quite hard to understand, but what is more peculier than code is it's deployment on live server. Heroku is tool that I am using for deployment. There are so many required dependencies to make flask program compatible. It took me straight 3 hours for deployment.<br>
+
+By using pipeline I could have got accuracy in less time, but it would not give precise information about hyperparameters, so I choose the other way. But achieved this results after so many crash of kernel.
+
+<br>
 Importing required dependencies and mounting google drive for data fetching
 ---
 
@@ -117,9 +177,9 @@ nltk.download("stopwords")
     
 
     [nltk_data] Downloading package punkt to /root/nltk_data...
-    [nltk_data]   Package punkt is already up-to-date!
+    [nltk_data]   Unzipping tokenizers/punkt.zip.
     [nltk_data] Downloading package stopwords to /root/nltk_data...
-    [nltk_data]   Package stopwords is already up-to-date!
+    [nltk_data]   Unzipping corpora/stopwords.zip.
     
 
 
@@ -138,14 +198,18 @@ from google.colab import drive
 drive.mount('/content/gdrive')
 ```
 
-    Drive already mounted at /content/gdrive; to attempt to forcibly remount, call drive.mount("/content/gdrive", force_remount=True).
+    Go to this URL in a browser: https://accounts.google.com/o/oauth2/auth?client_id=947318989803-6bn6qk8qdgf4n4g3pfee6491hc0brc4i.apps.googleusercontent.com&redirect_uri=urn%3aietf%3awg%3aoauth%3a2.0%3aoob&response_type=code&scope=email%20https%3a%2f%2fwww.googleapis.com%2fauth%2fdocs.test%20https%3a%2f%2fwww.googleapis.com%2fauth%2fdrive%20https%3a%2f%2fwww.googleapis.com%2fauth%2fdrive.photos.readonly%20https%3a%2f%2fwww.googleapis.com%2fauth%2fpeopleapi.readonly
+    
+    Enter your authorization code:
+    ··········
+    Mounted at /content/gdrive
     
 
 
 ```python
 os.chdir('/content/gdrive/My Drive/Data mining/')
 ```
-
+<br>
 Data acquisition of Board Game Geek dataset from google drive
 ---
 
@@ -239,7 +303,7 @@ review_data_game.head()
   </tbody>
 </table>
 </div>
-
+<br>
 
 
 Pre-processing of the dataset
@@ -267,7 +331,7 @@ review_data_game.isna().sum()
 
 ```python
 # this chart represents top 50 rated words from dataframe 
-plt.figure(figsize=(20, 7))
+plt.figure(figsize=(18, 7))
 review_data_game['name'].value_counts()[:50].plot(kind='bar')
 plt.ylabel('Count of Rating')
 plt.title('Top 50 Rated Games in dataframe')
@@ -579,7 +643,7 @@ review_data_game.head()
 
 ```python
 #histogram representing how much time each ratings occur
-fig = plt.figure()
+fig = plt.figure(figsize=(9,6))
 n, bins, patches = plt.hist(review_data_game.rating, bins=40, facecolor='blue',alpha = 1)
 plt.xlabel('Rating')
 plt.ylabel('Counts')
@@ -608,6 +672,7 @@ print("Median value: ",review_data_game['rating'].median())
     Average rating:  6.852069823043514
     Median value:  7.0
     
+<br>
 
 Model Creation and testing 
 ---
@@ -654,11 +719,15 @@ review_data['rating'].value_counts()
 X_train, X_test, y_train, y_test = train_test_split(review_data['comment'], review_data['rating'], test_size=0.3) # 70% training and 30% test
 ```
 
->TF-IDF stands for term frequency-inverse document frequency.TF-IDF is a weight often used in information retrieval and text mining.Tf-idf can be successfully used for stop-words filtering in various subject fields including text summarization and classification.<br>
-CountVectorizer:<br>
+>TF-IDF stands for term frequency-inverse document frequency.TF-IDF is a weight often used in information retrieval and text mining.Tf-idf can be successfully used for stop-words filtering and text lowering in various subject fields including text summarization and classification.<br>
+
+TfidfVectorizer:<br>
 Transforms text into a sparse matrix of n-gram counts.<br>
+TfidfVectorizer and CountVectorizer both are same thing.<br>
 TfidfTransformer:<br>
-Performs the TF-IDF transformation from a provided matrix of counts.
+Performs the TF-IDF transformation from a provided matrix of counts.<br>
+
+Even if you use only vectorizer and then do model fitting, it works. I am just using for better accuracy and effectiveness of vectors on model.
 
 
 ```python
@@ -690,18 +759,19 @@ accuracy_mNB = str(accuracy)
 print('Testing Accuracy on multinomial naive bayes model is: '+accuracy_mNB+' %')
 ```
 
-    Testing Accuracy on multinomial naive bayes model is: 30.23579379952914 %
+    Testing Accuracy on multinomial naive bayes model is: 30.163762894479778 %
     
 
 
 ```python
 #confusion matrix for what output we got
 print("Confusion matrix for Multinomial Naive Bayes classifier:\n")
+fig= plt.figure(figsize=(15,9))
+ax = fig.add_axes([1,1,1,1])
 matrix = confusion_matrix(y_test.astype('int'), y_predicted_mNB)
-sb.heatmap(matrix, square=True, annot=True, fmt='d', cbar=False )
-plt.xlabel('Actual rating')
-plt.ylabel('Predicted rating');
-plt.show()
+sb.heatmap(matrix/np.sum(matrix), square=True, annot=True)
+ax.set_xlabel('Actual rating')
+ax.set_ylabel('Predicted rating')
 ```
 
     Confusion matrix for Multinomial Naive Bayes classifier:
@@ -709,8 +779,20 @@ plt.show()
     
 
 
-![png](output_38_1.png)
 
+
+    Text(1274.9999999999998, 0.5, 'Predicted rating')
+
+
+
+
+![png](output_38_2.png)
+
+
+>Heatmap explanation:<br>
+    
+In above, heatmap accuracy is shown that how many times actual label is predicted correctly. As value gets bigger, it gets lighter( in this case ). i.e. We can see that value "8" is predicted correctly 20% of the time. Also "8" is predicted as "7", 15% times.<br>
+I have implemented further maps in different color to better visualize it.
 
 >Ridge Classifier<br>
 
@@ -725,17 +807,18 @@ ridge_class_accuracy = str(accuracy)
 print('Testing Accuracy on ridge classifier model is: '+ridge_class_accuracy+' %')
 ```
 
-    Testing Accuracy on ridge classifier model is: 31.376914979521743 %
+    Testing Accuracy on ridge classifier model is: 31.38057970977864 %
     
 
 
 ```python
 print("Confusion matrix for Ridge Classifier:\n")
+fig= plt.figure(figsize=(15,9))
+ax = fig.add_axes([1,1,1,1])
 matrix = confusion_matrix(y_test.astype('int'), y_predicted_ridge_class)
-sb.heatmap(matrix, square=True, annot=True, fmt='d', cbar=False )
-plt.xlabel('Actual rating')
-plt.ylabel('Predicted rating');
-plt.show()
+sb.heatmap(matrix/np.sum(matrix), square=True, annot=True, cmap="Blues")
+ax.set_xlabel('Actual rating')
+ax.set_ylabel('Predicted rating')
 ```
 
     Confusion matrix for Ridge Classifier:
@@ -743,11 +826,20 @@ plt.show()
     
 
 
-![png](output_41_1.png)
+
+
+    Text(1274.9999999999998, 0.5, 'Predicted rating')
+
+
+
+
+![png](output_42_2.png)
 
 
 
 ```python
+#well this is fun part. 
+#input your string at smt value and get rating for that.
 #here you can test rating for your desired review
 smt = "worst game dont play always play"
 smt=[smt]
@@ -789,49 +881,50 @@ print(p)
      
                   precision    recall  f1-score   support
     
-             0.0       1.00      0.00      0.00         1
-             1.0       0.18      0.00      0.00      6017
-             2.0       0.60      0.00      0.01     12347
-             3.0       0.08      0.00      0.00     21245
-             4.0       0.20      0.00      0.01     40964
-             5.0       0.23      0.00      0.00     65656
-             6.0       0.29      0.32      0.31    158017
-             7.0       0.28      0.16      0.20    172261
-             8.0       0.31      0.81      0.45    197197
-             9.0       0.23      0.00      0.01     71830
-            10.0       0.45      0.01      0.01     45792
+             0.0       1.00      0.00      0.00         3
+             1.0       0.07      0.00      0.00      6034
+             2.0       0.70      0.00      0.01     12262
+             3.0       0.05      0.00      0.00     21241
+             4.0       0.21      0.00      0.01     40883
+             5.0       0.19      0.00      0.00     65259
+             6.0       0.29      0.32      0.31    158432
+             7.0       0.28      0.16      0.20    172641
+             8.0       0.31      0.81      0.45    197190
+             9.0       0.23      0.00      0.01     71629
+            10.0       0.42      0.01      0.01     45753
     
         accuracy                           0.30    791327
-       macro avg       0.35      0.12      0.09    791327
-    weighted avg       0.29      0.30      0.22    791327
+       macro avg       0.34      0.12      0.09    791327
+    weighted avg       0.28      0.30      0.22    791327
     
     
     Report for Ridge regression:
      
                   precision    recall  f1-score   support
     
-             0.0       1.00      0.00      0.00         1
-             1.0       0.33      0.10      0.15      6017
-             2.0       0.24      0.05      0.08     12347
-             3.0       0.18      0.03      0.05     21245
-             4.0       0.20      0.06      0.09     40964
-             5.0       0.22      0.05      0.09     65656
-             6.0       0.30      0.40      0.35    158017
-             7.0       0.29      0.26      0.27    172261
-             8.0       0.34      0.61      0.44    197197
-             9.0       0.21      0.04      0.07     71830
-            10.0       0.35      0.17      0.23     45792
+             0.0       1.00      0.00      0.00         3
+             1.0       0.31      0.09      0.14      6034
+             2.0       0.25      0.05      0.08     12262
+             3.0       0.20      0.03      0.05     21241
+             4.0       0.21      0.06      0.09     40883
+             5.0       0.21      0.05      0.08     65259
+             6.0       0.31      0.40      0.35    158432
+             7.0       0.29      0.26      0.27    172641
+             8.0       0.34      0.61      0.44    197190
+             9.0       0.22      0.04      0.07     71629
+            10.0       0.34      0.16      0.22     45753
     
         accuracy                           0.31    791327
        macro avg       0.33      0.16      0.16    791327
     weighted avg       0.29      0.31      0.27    791327
     
     
+<br>
 
 Some other models
 ---
 
-I have trained these models for some small number of dataset values (20000-30000). Just to check their performance, accuracy, and time consumption
+I have trained these models for some small number of dataset values (20000-30000). Just to check their performance, accuracy, and time consumption. Because I am using these classifiers to implement ensemble methods. So it is better to use lesser data.
 
 
 ```python
@@ -843,7 +936,7 @@ X_train_small, X_test_small, y_train_small, y_test_small = train_test_split(smal
 
 ```python
 #histogram representing how much time each ratings occur
-fig = plt.figure()
+fig = plt.figure(figsize=(9,6))
 n, bins, patches = plt.hist(small_review_data.rating, bins=40, facecolor='blue',alpha = 1)
 plt.xlabel('Rating')
 plt.ylabel('Counts')
@@ -854,7 +947,7 @@ plt.show()
 ```
 
 
-![png](output_48_0.png)
+![png](output_49_0.png)
 
 
 
@@ -890,17 +983,18 @@ accuracy_svc = str(accuracy)
 print('Testing Accuracy is: '+accuracy_svc+' %')
 ```
 
-    Testing Accuracy is: 28.999999999999996 %
+    Testing Accuracy is: 28.67777777777778 %
     
 
 
 ```python
 print("Confusion matrix for Support vector machine:\n")
+fig= plt.figure(figsize=(8,6))
+ax = fig.add_axes([1,1,1,1])
 matrix = confusion_matrix(y_test_small.astype('int'), y_predicted_SVC)
-sb.heatmap(matrix, square=True, annot=True, fmt='d', cbar=False )
-plt.xlabel('Actual rating')
-plt.ylabel('Predicted rating');
-plt.show()
+sb.heatmap(matrix/np.sum(matrix), square=True, annot=True, cmap="Greys")
+ax.set_xlabel('Actual rating')
+ax.set_ylabel('Predicted rating')
 ```
 
     Confusion matrix for Support vector machine:
@@ -908,7 +1002,14 @@ plt.show()
     
 
 
-![png](output_52_1.png)
+
+
+    Text(583.8, 0.5, 'Predicted rating')
+
+
+
+
+![png](output_53_2.png)
 
 
 
@@ -926,17 +1027,18 @@ accuracy_linear_svc = str(accuracy)
 print('Testing Accuracy is: '+accuracy_linear_svc+' %')
 ```
 
-    Testing Accuracy is: 26.066666666666666 %
+    Testing Accuracy is: 26.0 %
     
 
 
 ```python
 print("Confusion matrix for Linear Support vector machine:\n")
+fig= plt.figure(figsize=(8,6))
+ax = fig.add_axes([1,1,1,1])
 matrix = confusion_matrix(y_test_small.astype('int'), y_predicted_linear_SVC)
-sb.heatmap(matrix, square=True, annot=True, fmt='d', cbar=False )
-plt.xlabel('Actual rating')
-plt.ylabel('Predicted rating');
-plt.show()
+sb.heatmap(matrix/np.sum(matrix), square=True, annot=True, cmap="Reds")
+ax.set_xlabel('Actual rating')
+ax.set_ylabel('Predicted rating')
 ```
 
     Confusion matrix for Linear Support vector machine:
@@ -944,7 +1046,14 @@ plt.show()
     
 
 
-![png](output_55_1.png)
+
+
+    Text(583.8, 0.5, 'Predicted rating')
+
+
+
+
+![png](output_56_2.png)
 
 
 * For same number of training and testing data, SVC model gives better accuracy than Linear SVC model, but at cost of time.
@@ -965,7 +1074,7 @@ accuracy_log_reg = str(accuracy)
 print('Testing Accuracy is: '+accuracy_log_reg+' %')
 ```
 
-    Testing Accuracy is: 29.22222222222222 %
+    Testing Accuracy is: 28.633333333333333 %
     
 
 * Logistic regression gives almost same accuracy as SVC model in even lesser time
@@ -973,11 +1082,12 @@ print('Testing Accuracy is: '+accuracy_log_reg+' %')
 
 ```python
 print("Confusion matrix for Logistic regression:\n")
+fig= plt.figure(figsize=(8,6))
+ax = fig.add_axes([1,1,1,1])
 matrix = confusion_matrix(y_test_small.astype('int'), y_predicted_log_reg)
-sb.heatmap(matrix, square=True, annot=True, fmt='d', cbar=False )
-plt.xlabel('Actual rating')
-plt.ylabel('Predicted rating');
-plt.show()
+sb.heatmap(matrix/np.sum(matrix), square=True, annot=True, cmap="BuPu")
+ax.set_xlabel('Actual rating')
+ax.set_ylabel('Predicted rating')
 ```
 
     Confusion matrix for Logistic regression:
@@ -985,7 +1095,14 @@ plt.show()
     
 
 
-![png](output_60_1.png)
+
+
+    Text(583.8, 0.5, 'Predicted rating')
+
+
+
+
+![png](output_61_2.png)
 
 
 >K nearest neighbours
@@ -999,17 +1116,18 @@ accuracy_knn = str(accuracy)
 print('Testing Accuracy is: '+accuracy_knn+' %')
 ```
 
-    Testing Accuracy is: 22.566666666666666 %
+    Testing Accuracy is: 22.53333333333333 %
     
 
 
 ```python
 print("Confusion matrix for kNN:\n")
 matrix = confusion_matrix(y_test_small.astype('int'), y_predicted_knn)
-sb.heatmap(matrix, square=True, annot=True, fmt='d', cbar=False )
-plt.xlabel('Actual rating')
-plt.ylabel('Predicted rating');
-plt.show()
+fig= plt.figure(figsize=(8,6))
+ax = fig.add_axes([1,1,1,1])
+sb.heatmap(matrix/np.sum(matrix), square=True, annot=True, cmap="RdPu")
+ax.set_xlabel('Actual rating')
+ax.set_ylabel('Predicted rating')
 ```
 
     Confusion matrix for kNN:
@@ -1017,17 +1135,23 @@ plt.show()
     
 
 
-![png](output_63_1.png)
 
 
-#Ensemble methods
+    Text(583.8, 0.5, 'Predicted rating')
 
 
+
+
+![png](output_64_2.png)
+
+<br>
+
+Ensemble methods
+---
 
 Ensemple method is machine learning trechnique which improves accuracy of algorithm by combining two or more individual algorithms for same dataset.<br>
 On above part, I got accuracy for SVC, Linear SVC, logistic regression, but that is very low to classify some random text.<br>
 SO here, I am using ensemble method on those algorithms to get better accuracy than what I have got.<br>
-Below is the **architecture** of working of ensemble methods.
 
 
 ```python
@@ -1040,7 +1164,7 @@ accuracy_ensemble = str(accuracy_ensemble)
 print('Testing Accuracy is: '+accuracy_ensemble+' %')
 ```
 
-    Testing Accuracy is: 28.844444444444445 %
+    Testing Accuracy is: 28.81111111111111 %
     
 
 * As we can see, after ensembling Logistic regression, kNN and SVC algorithms we got better accuracy than what they have individually achieved.  
@@ -1049,10 +1173,11 @@ print('Testing Accuracy is: '+accuracy_ensemble+' %')
 ```python
 print("Confusion matrix for Ensemble methos for given estimators:\n")
 matrix = confusion_matrix(y_test_small.astype('int'), ensemble_predicted)
-sb.heatmap(matrix, square=True, annot=True, fmt='d', cbar=False )
-plt.xlabel('Actual rating')
-plt.ylabel('Predicted rating');
-plt.show()
+fig= plt.figure(figsize=(8,6))
+ax = fig.add_axes([1,1,1,1])
+sb.heatmap(matrix/np.sum(matrix), square=True, annot=True, cmap="Purples")
+ax.set_xlabel('Actual rating')
+ax.set_ylabel('Predicted rating')
 ```
 
     Confusion matrix for Ensemble methos for given estimators:
@@ -1060,38 +1185,55 @@ plt.show()
     
 
 
-![png](output_68_1.png)
 
 
-#Final Test
+    Text(583.8, 0.5, 'Predicted rating')
 
-Here i have visualized accuracy of all the classifiers to compare.
+
+
+
+![png](output_69_2.png)
+
+
+Final Test
+---
+
+Here i have visualized accuracy of all the classifiers to compare. From graph we can go for final classifer for our testing.
+
+
+```python
+acc1 = float(accuracy_mNB)
+acc2 = float(ridge_class_accuracy)
+acc3 = float(accuracy_svc)
+acc4 = float(accuracy_linear_svc)
+acc5 = float(accuracy_log_reg)
+acc6 = float(accuracy_knn)
+```
 
 
 ```python
 acc=[]
-acc.append(accuracy_mNB)
-acc.append(ridge_class_accuracy)
-acc.append(accuracy_svc)
-acc.append(accuracy_linear_svc)
-acc.append(accuracy_log_reg)
-acc.append(accuracy_knn)
+acc.append(acc1)
+acc.append(acc2)
+acc.append(acc3)
+acc.append(acc4)
+acc.append(acc5)
+acc.append(acc6)
 ```
 
 
 ```python
-fig = plt.figure()
+fig = plt.figure(figsize=(9,6))
 labels = ['MNB','Ridge','SVM','Linear SVC','Logistic','kNN']
-#acc = [accuracy_mNB,ridge_class_accuracy,accuracy_svc,accuracy_linear_svc,accuracy_log_reg,accuracy_knn]
-#acc = [1,2,3,4,5,6]
-ax = fig.add_axes([0,0,1,1])
+#acc = [30.163762894479778,31.38057970977864, 28.67777777777778, 26.0, 28.633333333333333, 22.53333333333333]
+ax = fig.add_axes([0, 0, 1, 1])
 ax.bar(labels,acc)
-plt.ylim(0,40,0.01)
+plt.ylim(0,35)
 plt.show()
 ```
 
 
-![png](output_72_0.png)
+![png](output_74_0.png)
 
 
 >From above all classifiers and ensemble methods, Ridge classifier gives best output (prediction) for given review. So we are using that one for random review inputs.
@@ -1099,23 +1241,25 @@ plt.show()
 
 ```python
 def redge_acc(smt):
-  smt=[smt]
-  smt = vectorizer.transform(smt)
-  smt = transformer.fit_transform(smt)
-  prediction = np.round(model_ridge_class.predict(smt))
+  smt=[smt] #converting text into array for code compatibility
+  smt = vectorizer.transform(smt) #vectorize data
+  smt = transformer.fit_transform(smt) #transforming input string vector
+  prediction = np.round(model_ridge_class.predict(smt)) #using ridge classifier trained model to predict rating for what user has gave input
   return prediction
 ```
 
 
 ```python
-#insert values in the input box below to get rating
 while True:
-  smt = input()
+  smt = input("Insert your review: \n")
   rating_prediction = redge_acc(smt)
-  print(rating_prediction)
+  print("\nRating: ",int(rating_prediction))
+  print("\n")
 ```
+<br>
 
-#Contributions
+Contributions
+---
 
 
 
@@ -1124,18 +1268,22 @@ while True:
 3. Saved model in local system for further any classification purpose. 
 
 
+<br>
 
-#Challenges faced:
+Challenges faced:
+---
 
 
 
 1.   The dataset was too large for the systems we are using, so I need to pre process data first in order to use it for training and testing. For pre processing I have to use case lowering, tokenization, regular expression for alphabets, punctuation removal and removing stop words.
-2.   I am using 5-7 classifiers for accuracy comparisons and data analysis. So I have to got in depth knowledge about those classifiers before implementation.
-3. Better data visualization, I need to understand 7-10 types of libraries and graphs.
+2. Dataset contains so many (above 70%) missing values (NaN) in comment column, which is required to predict rating. Before proceeding further removed these rows without affecting accuracy and meaningful data.
+3. I used Flask to write web application code for text classification. Flask is quite hard to understand, but what is more peculier than code is it's deployment on live server. Heroku is tool that I am using for deployment. There are so many required dependencies to make flask program compatible. It took me straight 3 hours for deployment. 
+3. By using pipeline I could have done the same thing (getting accuracy) in less time, but it would not give precise information about hyperparameters, so I choose the other way. But achieved this results after so many crash of kernel. I am using 5-7 classifiers for accuracy comparisons and data analysis. So I have to get in-depth knowledge about those classifiers before implementation and for better data visualization, I need to understand 7-10 types of libraries and graphs.
 
+<br>
 
-
-#Exporting trained models to drive and then to local system for further use
+Exporting trained models to drive and then to local system for further use:
+---
 
 
 ```python
@@ -1155,16 +1303,22 @@ joblib.dump(vectorizer,'vectorizer.sav')
 joblib.dump(transformer,'transformer.sav')
 ```
 
+    /usr/local/lib/python3.6/dist-packages/sklearn/externals/joblib/__init__.py:15: FutureWarning: sklearn.externals.joblib is deprecated in 0.21 and will be removed in 0.23. Please import this functionality directly from joblib, which can be installed with: pip install joblib. If this warning is raised when loading pickled models, you may need to re-serialize those models with scikit-learn 0.21+.
+      warnings.warn(msg, category=FutureWarning)
+    
+
 
 
 
     ['transformer.sav']
 
+<br>
+
+References:
+---
 
 
-#References:
-
-
+> I used sklearn library for classifiers as well as for vectorization and transformation, so most of the references are linked to official website of sklearn. 
 
 1.   Reading large dataset: https://towardsdatascience.com/3-simple-ways-to-handle-large-data-with-pandas-d9164a3c02c1
 2.   Data Preparation: https://www.kaggle.com/ngrq94/boardgamegeek-reviews-data-preparation
@@ -1182,6 +1336,13 @@ https://towardsdatascience.com/nlp-for-beginners-cleaning-preprocessing-text-dat
 13. Confusion matrix: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html
 14. Classification report: https://scikit-learn.org/0.18/modules/generated/sklearn.metrics.classification_report.html
 15. Random histograms: https://towardsdatascience.com/a-complete-exploratory-data-analysis-and-visualization-for-text-data-29fb1b96fb6a
+16. Heatmap: https://seaborn.pydata.org/generated/seaborn.heatmap.html
+
+
+
+
+
+
 
 
 ```python
