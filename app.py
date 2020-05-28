@@ -12,8 +12,8 @@ def predictcall():
     if request.method == 'POST':
         x=request.form['message']
         sam=[x]
-        vector = joblib.load('models/vectorizer.sav')
-        ridge = joblib.load('models/model_ridge_class.sav')
+        vector = joblib.load('vectorizer.sav')
+        ridge = joblib.load('model_ridge_class.sav')
         text = vector.transform(sam)
         result = np.round(ridge.predict(text))
         result=str(result).strip('[.]')
